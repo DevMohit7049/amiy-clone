@@ -3,19 +3,17 @@
 @theme {
   --color-primary: #6c6948;
   --color-primary-dark: #5a5839;
-  --color-primary-light: #f0f0e8;
-  --color-accent: #d2cfae;
-  --color-accent-dark: #c2bf9e;
-  --color-bg-cream: #fefbf8;
-  --color-bg-light: #f5f0eb;
+  --color-text-dark: #6c6948;
   --color-bg-strip: #424423;
-  --color-text-dark: #424423;
-  --color-text-gray: #666666;
-  --color-text-light: #999999;
-  --color-border: #e5e5e5;
+  --color-text-header: #424423;
+  --color-text-gray: #6c6948;
+  --color-bg-cream: #fcf7f1;
+  --color-bg-light: #FDEBE0;
+  --color-accent: #2e3b22;
+  --color-border: rgba(108, 105, 72, 0.4);
   --color-star: #f5a623;
   --font-heading: 'Playfair Display', serif;
-  --font-body: 'Poppins', sans-serif;
+  --font-body: 'Alpino', sans-serif;
 }
 
 @layer base {
@@ -31,7 +29,22 @@
 
   body {
     font-family: var(--font-body);
-    color: var(--color-text-dark);
-    background-color: #ffffff;
+    color: var(--color-text-gray);
+    background-color: var(--color-bg-cream);
+    letter-spacing: 0.5px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    color: var(--color-text-gray);
+  }
+
+  .section-heading {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-text-gray);
   }
 }

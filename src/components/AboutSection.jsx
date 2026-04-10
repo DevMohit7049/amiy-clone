@@ -7,7 +7,7 @@ const AboutSection = () => {
           <div className="relative">
             <div className="rounded-2xl overflow-hidden shadow-lg">
               <img
-                src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=600&q=80"
+                src="/1.webp"
                 alt="Amiy Naturals - Natural ingredients"
                 className="w-full h-[300px] md:h-[450px] object-cover"
               />

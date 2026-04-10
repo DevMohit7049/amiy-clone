@@ -1,34 +1,34 @@
 const categories = [
   {
     name: 'Muscle & Joint Pain',
-    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&q=80',
+    image: '/4.webp',
     icon: '💪',
   },
   {
     name: 'Indigestion & Bloating',
-    image: 'https://images.unsplash.com/photo-1505576399279-0d06b2c0e4a7?w=400&q=80',
+    image: '/6.webp',
     icon: '🫃',
   },
   {
     name: 'Period Pain & Cramps',
-    image: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&q=80',
+    image: '/7.webp',
     icon: '🌸',
   },
   {
     name: 'Acne & Pigmentation',
-    image: 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=400&q=80',
+    image: '/3.webp',
     icon: '✨',
   },
   {
     name: 'Stress, Anxiety, and Depression',
-    image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&q=80',
+    image: '/5.webp',
     icon: '🧘',
   },
 ];
 
 const CategorySection = () => {
   return (
-    <section className="py-12 md:py-20 bg-white">
+    <section className="py-12 md:py-20" style={{ backgroundColor: '#fcf7f1' }}>
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         {/* Section header */}
         <div className="text-center mb-10 md:mb-14">

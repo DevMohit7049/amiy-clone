@@ -55,7 +55,7 @@ const Testimonial = () => {
   };
 
   return (
-    <section className="py-12 md:py-20 bg-white">
+    <section className="py-12 md:py-20" style={{ backgroundColor: '#fcf7f1' }}>
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         {/* Section header */}
         <div className="text-center mb-10 md:mb-14">
