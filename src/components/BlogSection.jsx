@@ -1,9 +1,4 @@
-import { useEffect, useRef } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import { useState } from 'react';
 
 const blogPosts = [
   {
@@ -33,18 +28,19 @@ const blogPosts = [
 ];
 
 const BlogSection = () => {
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
-  const swiperRef = useRef(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const itemsPerView = typeof window !== 'undefined' && window.innerWidth >= 1200 ? 4 : window.innerWidth >= 992 ? 3 : window.innerWidth >= 768 ? 2 : 1;
 
-  useEffect(() => {
-    if (swiperRef.current && prevRef.current && nextRef.current) {
-      swiperRef.current.params.navigation.prevEl = prevRef.current;
-      swiperRef.current.params.navigation.nextEl = nextRef.current;
-      swiperRef.current.navigation.init();
-      swiperRef.current.navigation.update();
-    }
-  }, []);
+  const visiblePosts = blogPosts.slice(currentSlide, currentSlide + itemsPerView);
+  const maxSlide = Math.max(0, blogPosts.length - itemsPerView);
+
+  const handlePrev = () => {
+    setCurrentSlide(Math.max(0, currentSlide - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentSlide(Math.min(maxSlide, currentSlide + 1));
+  };
 
   return (
     <section id="blog" className="py-12 md:py-20 bg-bg-cream">
@@ -59,59 +55,39 @@ const BlogSection = () => {
 
         {/* Blog carousel */}
         <div className="relative">
-          <Swiper
-            ref={swiperRef}
-            modules={[Navigation, Pagination, Autoplay]}
-            spaceBetween={20}
-            slidesPerView={1}
-            breakpoints={{
-              576: { slidesPerView: 1, spaceBetween: 20 },
-              768: { slidesPerView: 2, spaceBetween: 20 },
-              992: { slidesPerView: 3, spaceBetween: 20 },
-              1200: { slidesPerView: 4, spaceBetween: 20 },
-            }}
-            pagination={{
-              clickable: true,
-              el: '.blog-pagination',
-            }}
-            autoplay={{
-              delay: 5000,
-              pauseOnMouseEnter: true,
-              disableOnInteraction: false,
-            }}
-            speed={1000}
-            loop={false}
-            className="pb-12"
-          >
-            {blogPosts.map((post, idx) => (
-              <SwiperSlide key={post.title} className={idx % 2 === 0 ? 'odd' : 'even'}>
-                <a href="#" className="group bg-white overflow-hidden hover:shadow-lg transition-shadow duration-300 block h-full">
-                  {/* Image with aspect ratio */}
-                  <div className="blog-image overflow-hidden" style={{ aspectRatio: '1 / 1.096' }}>
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {visiblePosts.map((post) => (
+              <a
+                key={post.title}
+                href="#"
+                className="group bg-white overflow-hidden hover:shadow-lg transition-shadow duration-300 block h-full"
+              >
+                {/* Image with aspect ratio */}
+                <div className="blog-image overflow-hidden" style={{ aspectRatio: '1 / 1.096' }}>
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
 
-                  {/* Content */}
-                  <div className="p-4 md:p-5">
-                    <p className="text-primary text-xs font-medium mb-2">{post.date}</p>
-                    <h3 className="font-heading text-sm md:text-base text-text-gray mb-2 line-clamp-2 group-hover:text-primary transition-colors duration-200">
-                      {post.title}
-                    </h3>
-                  </div>
-                </a>
-              </SwiperSlide>
+                {/* Content */}
+                <div className="p-4 md:p-5">
+                  <p className="text-primary text-xs font-medium mb-2">{post.date}</p>
+                  <h3 className="font-heading text-sm md:text-base text-text-gray mb-2 line-clamp-2 group-hover:text-primary transition-colors duration-200">
+                    {post.title}
+                  </h3>
+                </div>
+              </a>
             ))}
-          </Swiper>
+          </div>
 
           {/* Navigation buttons */}
-          <div className="flex items-center justify-between mt-4">
+          <div className="flex items-center justify-between mt-6 md:mt-8">
             <button
-              ref={prevRef}
-              className="blog-prev w-10 h-10 rounded-full border border-primary text-primary hover:bg-primary hover:text-white transition-all duration-200 flex items-center justify-center"
+              onClick={handlePrev}
+              disabled={currentSlide === 0}
+              className="blog-prev w-10 h-10 rounded-full border border-primary text-primary hover:bg-primary hover:text-white transition-all duration-200 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
               aria-label="Previous slide"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -119,11 +95,24 @@ const BlogSection = () => {
               </svg>
             </button>
 
-            <div className="blog-pagination flex gap-2 justify-center flex-1 mx-4" />
+            <div className="flex gap-2 justify-center flex-1 mx-4">
+              {[...Array(Math.ceil(blogPosts.length / itemsPerView))].map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentSlide(idx * itemsPerView)}
+                  className="w-2 h-2 rounded-full transition-all duration-200"
+                  style={{
+                    backgroundColor: idx === Math.floor(currentSlide / itemsPerView) ? '#6c6948' : 'rgba(108, 105, 72, 0.3)',
+                  }}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
 
             <button
-              ref={nextRef}
-              className="blog-next w-10 h-10 rounded-full border border-primary text-primary hover:bg-primary hover:text-white transition-all duration-200 flex items-center justify-center"
+              onClick={handleNext}
+              disabled={currentSlide >= maxSlide}
+              className="blog-next w-10 h-10 rounded-full border border-primary text-primary hover:bg-primary hover:text-white transition-all duration-200 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
               aria-label="Next slide"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -133,19 +122,6 @@ const BlogSection = () => {
           </div>
         </div>
       </div>
-
-      <style>{`
-        .swiper-pagination-bullet {
-          background-color: var(--color-primary);
-          opacity: 0.5;
-          width: 8px;
-          height: 8px;
-        }
-        .swiper-pagination-bullet.swiper-pagination-bullet-active {
-          opacity: 1;
-          background-color: var(--color-primary);
-        }
-      `}</style>
     </section>
   );
 };
