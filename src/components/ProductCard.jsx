@@ -14,22 +14,8 @@ const ProductCard = ({ product }) => {
           alt={name}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
-        {badge && (
-          <span className="absolute top-3 left-3 bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full">
-            {badge}
-          </span>
-        )}
-        {discount > 0 && (
-          <span className="absolute top-3 right-3 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded-full">
-            Save {discount}%
-          </span>
-        )}
         {/* Quick view overlay */}
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 flex items-end justify-center pb-4 opacity-0 group-hover:opacity-100">
-          <button className="bg-white text-text-dark px-6 py-2 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition-all duration-200 transform translate-y-4 group-hover:translate-y-0 shadow-lg">
-            Quick View
-          </button>
-        </div>
+ 
       </div>
 
       {/* Product info */}
@@ -62,7 +48,7 @@ const ProductCard = ({ product }) => {
 
         {/* Price */}
         <div className="flex items-center gap-2 mb-4">
-          <span className="text-primary font-bold text-lg">₹ {price.toLocaleString()}</span>
+          <span className="text-text-dark font-bold text-lg">₹ {price.toLocaleString()}</span>
           {originalPrice && (
             <span className="text-text-light line-through text-sm">
               ₹ {originalPrice.toLocaleString()}
@@ -71,7 +57,7 @@ const ProductCard = ({ product }) => {
         </div>
 
         {/* Add to bag button */}
-        <button className="w-full bg-primary hover:bg-primary-dark text-white py-2.5 rounded-full text-sm font-medium transition-all duration-200 hover:shadow-md">
+        <button className="w-full text-white py-2.5 text-sm font-medium transition-all duration-200 hover:shadow-md hover:opacity-90 bg-primary hover:bg-primary-dark">
           Add to Bag
         </button>
       </div>

@@ -7,7 +7,7 @@ const products = [
     price: 3760,
     originalPrice: 4000,
     reviews: 23,
-    image: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=400&q=80',
+    image: '/3.webp',
     badge: 'Bestseller',
   },
   {
@@ -16,7 +16,7 @@ const products = [
     price: 3760,
     originalPrice: 4000,
     reviews: 18,
-    image: 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400&q=80',
+    image: '/4.webp',
   },
   {
     name: 'Tranquil Tonic',
@@ -24,7 +24,7 @@ const products = [
     price: 3760,
     originalPrice: 4000,
     reviews: 22,
-    image: 'https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?w=400&q=80',
+    image: '/5.webp',
   },
   {
     name: 'Gut Reset',
@@ -32,7 +32,7 @@ const products = [
     price: 3760,
     originalPrice: 4000,
     reviews: 14,
-    image: 'https://images.unsplash.com/photo-1573461160327-b450ce3d8e7f?w=400&q=80',
+    image: '/6.webp',
   },
   {
     name: 'Period Pacifier',
@@ -40,7 +40,7 @@ const products = [
     price: 3760,
     originalPrice: 4000,
     reviews: 12,
-    image: 'https://images.unsplash.com/photo-1617897903246-719242758050?w=400&q=80',
+    image: '/7.webp',
   },
 ];
 
@@ -49,19 +49,9 @@ const ProductSection = () => {
     <section id="products" className="py-12 md:py-20 px-4 md:px-8 max-w-7xl mx-auto">
       {/* Section header */}
       <div className="text-center mb-10 md:mb-14">
-        <h2 className="font-heading text-3xl md:text-4xl font-bold text-text-dark mb-3">
+        <h2 className="font-heading text-3xl md:text-4xl font-bold text-text-dark mb-3 text-left">
           Our Products
         </h2>
-        <div className="w-16 h-0.5 bg-primary mx-auto mb-4" />
-        <a
-          href="#"
-          className="text-primary hover:text-primary-dark text-sm font-medium transition-colors inline-flex items-center gap-1"
-        >
-          View All
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </a>
       </div>
 
       {/* Product grid */}
