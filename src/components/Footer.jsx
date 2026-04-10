@@ -156,14 +156,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Copyright bar */}
-      <div className="py-4" style={{ backgroundColor: '#fcf7f1', borderTop: '1px solid rgba(40, 42, 39, 0.3)' }}>
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <p className="text-xs text-center" style={{ color: '#6c6948' }}>
-            2026 © MAYIN BRANDS PRIVATE LIMITED. All rights reserved | AYUSH LICENCE NUMBER: MP/25E/24/1162
-          </p>
-        </div>
-      </div>
     </footer>
   );
 };

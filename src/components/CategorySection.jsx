@@ -2,27 +2,22 @@ const categories = [
   {
     name: 'Muscle & Joint Pain',
     image: '/4.webp',
-    icon: '💪',
   },
   {
     name: 'Indigestion & Bloating',
     image: '/6.webp',
-    icon: '🫃',
   },
   {
     name: 'Period Pain & Cramps',
     image: '/7.webp',
-    icon: '🌸',
   },
   {
     name: 'Acne & Pigmentation',
     image: '/3.webp',
-    icon: '✨',
   },
   {
     name: 'Stress, Anxiety, and Depression',
     image: '/5.webp',
-    icon: '🧘',
   },
 ];
 
@@ -56,7 +51,6 @@ const CategorySection = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-4 text-center">
-                <span className="text-2xl mb-2 block">{category.icon}</span>
                 <h3 className="text-white font-semibold text-sm md:text-base leading-tight">
                   {category.name}
                 </h3>
