@@ -4,25 +4,25 @@ const blogPosts = [
   {
     title: '6 Ayurvedic Sinus Relief Remedies',
     date: 'Mar 27, 2026',
-    image: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=400&q=80',
+    image: '/3.webp',
     excerpt: 'Discover natural Ayurvedic remedies to relieve sinus congestion and pressure.',
   },
   {
     title: 'Do Pomegranates Help With Period Cramps?',
     date: 'Mar 27, 2026',
-    image: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=400&q=80',
+    image: '/4.webp',
     excerpt: 'Explore the science behind pomegranates and their effect on menstrual pain.',
   },
   {
     title: 'Ayurvedic Solutions For Acne That Works Naturally',
     date: 'Mar 24, 2026',
-    image: 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=400&q=80',
+    image: '/5.webp',
     excerpt: 'Learn about time-tested Ayurvedic approaches to clear, healthy skin.',
   },
   {
     title: '6 Natural Herbs to Relax Muscles',
     date: 'Mar 24, 2026',
-    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&q=80',
+    image: '/6.webp',
     excerpt: 'Natural herbs that can help soothe muscle tension and promote relaxation.',
   },
 ];
